@@ -37,7 +37,7 @@ namespace Events
 				if (!defender || !attackingWeapon || !defender->currentProcess || !defender->currentProcess->high || !attackingWeapon->IsMelee() || !defender->Get3D())
 					return RE::BSEventNotifyControl::kContinue;
 
-				if (defender && attackingWeapon->GetWeaponType() == RE::WEAPON_TYPE::kHandToHandMelee)
+				if ((defender->ActorState::GetLifeState() != RE::ACTOR_LIFE_STATE::kDead) && attackingWeapon->GetWeaponType() == RE::WEAPON_TYPE::kHandToHandMelee)
 				{
 					ApplyHandToHandXP();
 				}
