@@ -24,20 +24,23 @@ namespace Events
 
 			if (!a_event->flags.any(HitFlag::kBashAttack) && a_event->target)
 			{
-				auto attacker = a_event->cause ? a_event->cause->As<RE::Actor>() : nullptr;
 
-				if (!attacker|| !attacker->currentProcess || !attacker->currentProcess->high || attacker != RE::PlayerCharacter::GetSingleton())
-				{
-					return RE::BSEventNotifyControl::kContinue;
-				}
+				if (!a_event || !a_event->cause || !a_event->cause->IsPlayerRef() || a_event->target->IsNot(RE::FormType::ActorCharacter) || !a_event->source)
+					return RE::BSEventNotifyControl::kContinue;				
 
 				auto defender = a_event->target->As<RE::Actor>();
 				auto attackingWeapon = RE::TESForm::LookupByID<RE::TESObjectWEAP>(a_event->source);
 
 				if (!defender || !attackingWeapon || !defender->currentProcess || !defender->currentProcess->high || !attackingWeapon->IsMelee() || !defender->Get3D())
 					return RE::BSEventNotifyControl::kContinue;
+				
+				auto player = a_event->cause->As<RE::Actor>();
+				auto playerAttkData = player->currentProcess->high->attackData;
 
-				if ((defender->ActorState::GetLifeState() != RE::ACTOR_LIFE_STATE::kDead) && attackingWeapon->GetWeaponType() == RE::WEAPON_TYPE::kHandToHandMelee)
+				if (!playerAttkData)
+					return RE::BSEventNotifyControl::kContinue;
+
+				if ((defender->ActorState::GetLifeState() != RE::ACTOR_LIFE_STATE::kDead) && attackingWeapon->IsHandToHandMelee())
 				{
 					ApplyHandToHandXP();
 				}
