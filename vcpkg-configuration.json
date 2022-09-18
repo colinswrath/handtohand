@@ -3,7 +3,7 @@
     {
       "kind": "git",
       "repository": "https://gitlab.com/colorglass/vcpkg-colorglass",
-      "baseline": "0f58c21b7a7cc96c1ff7bd949c9f4530b514625d",
+      "baseline": "51bcc6236d5369fd69e1dc2d5212c5e44d0bfc4f",
       "packages": [
 		"commonlibsse-ng",
         "commonlibsse-ng-flatrim"

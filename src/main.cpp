@@ -30,6 +30,7 @@ void InitLogger()
 	logger::info(FMT_STRING("{} v{}"), Version::PROJECT, Version::NAME);
 }
 
+
 //	1.5.97 Necessary
 extern "C" DLLEXPORT bool SKSEAPI SKSEPlugin_Query(const SKSE::QueryInterface * a_skse, SKSE::PluginInfo * a_info)
 {
@@ -54,8 +55,8 @@ extern "C" DLLEXPORT bool SKSEAPI SKSEPlugin_Query(const SKSE::QueryInterface * 
 }
 
 
-extern "C" DLLEXPORT constexpr auto SKSEPlugin_Version =
-[]() {
+extern "C" DLLEXPORT constinit auto SKSEPlugin_Version =
+	[]() {
 	SKSE::PluginVersionData v{};
 	v.PluginVersion(Version::MAJOR);
 	v.PluginName(Version::PROJECT);
