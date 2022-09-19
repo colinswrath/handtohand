@@ -40,7 +40,7 @@ namespace Events
 				if (!playerAttkData)
 					return RE::BSEventNotifyControl::kContinue;
 
-				if ((defender->ActorState::GetLifeState() != RE::ACTOR_LIFE_STATE::kDead) && attackingWeapon->IsHandToHandMelee())
+				if ((defender->ActorState::GetLifeState() != RE::ACTOR_LIFE_STATE::kDead) && IsBeastRace() && attackingWeapon->IsHandToHandMelee())
 				{
 					ApplyHandToHandXP();
 				}
@@ -66,6 +66,12 @@ namespace Events
 			player->AddSkillExperience(RE::ActorValue::kLockpicking, baseXP);	
 		}
 		OnHitEventHandler() = default;
+
+		static bool IsBeastRace()
+		{
+			RE::MenuControls* MenuControls = RE::MenuControls::GetSingleton();
+			return MenuControls->InBeastForm();
+		}
 	};
 
 	inline static void Register()

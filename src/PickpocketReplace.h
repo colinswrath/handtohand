@@ -6,7 +6,7 @@ namespace PickpocketReplace
 
 	void static Install()
 	{
-		//1.6
+		//1.6+
 		static REL::Relocation<std::uintptr_t> hook_LockPick{REL::ID(51968), 0x4E};
 		static REL::Relocation<std::uintptr_t> hook_LockPickBreak{ REL::ID(51975), 0x234 };
 
