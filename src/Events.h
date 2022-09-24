@@ -42,8 +42,8 @@ namespace Events
 				if (!playerAttkData) {
 					return RE::BSEventNotifyControl::kContinue;
 				}
-
-				if ((defender->ActorState::GetLifeState() != RE::ACTOR_LIFE_STATE::kDead) && !IsBeastRace() && attackingWeapon->IsHandToHandMelee()) {
+				;
+				if ((defender->AsActorState()->GetLifeState() != RE::ACTOR_LIFE_STATE::kDead) && !IsBeastRace() && attackingWeapon->IsHandToHandMelee()) {
 					ApplyHandToHandXP();
 				}
 			}
@@ -61,7 +61,8 @@ namespace Events
 		inline static void ApplyHandToHandXP()
 		{
 			auto player = RE::PlayerCharacter::GetSingleton();
-			float HandToHandLevel = player->GetActorValue(RE::ActorValue::kLockpicking);
+
+			float HandToHandLevel = player->AsActorValueOwner()->GetActorValue(RE::ActorValue::kLockpicking);
 
 			float baseXP = (Settings::BonusXPPerLevel * HandToHandLevel)+Settings::BaseXP;
 
