@@ -1,13 +1,21 @@
 {
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg/master/scripts/vcpkg.schema.json",
   "name": "handtohand",
   "version-string": "1.0.0",
-  "description": "",
+  "port-version": 0,
+  "description": "SKSE plugin based on CommonLibSSE, for unified AE/SE/VR deployment.",
   "homepage": "",
   "license": "MIT",
-  "dependencies": [
-    "boost-stl-interfaces",
-    "rsm-binary-io",
-    "spdlog",
-	"simpleini"
+  "features": {
+      "plugin": {
+          "description": "Build the SKSE plugin.",
+          "dependencies": [
+            "simpleini",
+            "commonlibsse-ng"
+          ]
+      }
+  },
+  "default-features": [
+      "plugin"
   ]
 }
