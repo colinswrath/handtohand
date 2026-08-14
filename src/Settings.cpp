@@ -2,6 +2,8 @@
 
 void Settings::LoadSettings()
 {
+    logger::info("Loading settings");
+
     CSimpleIniA ini;
     ini.SetUnicode();
     ini.LoadFile(R"(.\Data\SKSE\Plugins\HandToHand.ini)");
@@ -12,5 +14,7 @@ void Settings::LoadSettings()
 
     (bonusXP < 0.0 || bonusXP > 100.0) ? BonusXPPerLevel = 0.15f : BonusXPPerLevel = bonusXP;
     baseXP < 0.0 ? BaseXP = 3.0f : BaseXP = baseXP;
+
+    logger::info("Settings loaded");
 }
 

@@ -3,7 +3,7 @@
 
 namespace MiscPatches
 {
-    inline static REL::Relocation<std::uintptr_t> GetUnarmedDamageHook(REL::RelocationID(25851, 26420)); //Incorrect 1.5 address
+    inline static REL::Relocation<std::uintptr_t> GetUnarmedDamageHook(REL::RelocationID(25854, 26420));
 
     void GetUnarmedDamage(RE::ActorValueOwner* avOwner, float* result)
     {

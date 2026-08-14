@@ -6,6 +6,7 @@ namespace PickpocketReplace
 
 	void static Install()
 	{
+        logger::info("Installing pickpocket replace hooks");
 		static REL::Relocation<std::uintptr_t> hook_LockPick{REL::RelocationID(51088,51968), 0x4E};
 		static REL::Relocation<std::uintptr_t> hook_LockPickBreak{ REL::RelocationID(51093,51975), 0x234 };
 
@@ -16,5 +17,7 @@ namespace PickpocketReplace
 		REL::safe_write<std::uint8_t>(hook_LockPickBreak.address(), SkillIndexReplace);
 		REL::safe_write<std::uint8_t>(hook_LockpickMenuSkillLevel.address(), SkillIndexReplace);
 		REL::safe_write<std::uint8_t>(hook_LockpickMenuXPProgress.address(), SkillIndexReplace);
+        logger::info("Installed pickpocket replace hooks");
+
 	}
 }

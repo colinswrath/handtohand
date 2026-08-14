@@ -53,8 +53,11 @@ namespace Events
 
 		static void Register()
 		{
+            logger::info("Registering on hit event sink");
 			RE::ScriptEventSourceHolder* eventHolder = RE::ScriptEventSourceHolder::GetSingleton();
 			eventHolder->AddEventSink(OnHitEventHandler::GetSingleton());
+            logger::info("Registered on hit event sink");
+
 		}
 
 	private:
@@ -80,6 +83,7 @@ namespace Events
 
 	inline static void Register()
 	{
+        logger::info("Registering events");
 		OnHitEventHandler::Register();
 	}
 

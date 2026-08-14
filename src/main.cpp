@@ -10,13 +10,9 @@ void InitListener(SKSE::MessagingInterface::Message* a_msg) noexcept
     switch (a_msg->type)
     {
     case SKSE::MessagingInterface::kDataLoaded:
+        Events::Register();
         break;
     case SKSE::MessagingInterface::kPostLoadGame:
-        /*logger::debug("LOAD");
-        logger::debug("--------------");
-        if (!Hooks::InstallHooks()) {
-            logger::error("Hook installation failed.");
-        }*/
         break;
     }
 }
@@ -39,11 +35,14 @@ SKSEPluginLoad(const SKSE::LoadInterface* skse)
     }
 
     Settings::LoadSettings();
-    Events::Register();
     PickpocketReplace::Install();
     if (!MiscPatches::InstallUnarmedDamagePatch())
     {
+        logger::info("Failed to install unarmed damage patch");
         return false;
+    }
+    else {
+        logger::info("Unarmed damage patch installed");
     }
 
     logger::info("{} has finished loading.", name);
