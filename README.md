@@ -1,24 +1,17 @@
-This is a plugin written for the Adamant add-on called "Hand To Hand".
- 
--Redirects lockpick XP to Pickpocket (now called Security)
 
--Catches hand to hand hits and allocates XP to lockpick (Now hand to hand)
+## What does it do?  
 
--Changes XP bar in lockpick menu to use pickpocket XP and level
 
 ## Requirements
 * [CMake](https://cmake.org/)
 	* Add this to your `PATH`
-	
+* [PowerShell](https://github.com/PowerShell/PowerShell/releases/latest)
+* [Vcpkg](https://github.com/microsoft/vcpkg)
+	* Add the environment variable `VCPKG_ROOT` with the value as the path to the folder containing vcpkg
+* [Visual Studio Community 2019](https://visualstudio.microsoft.com/)
+	* Desktop development with C++
+
 ## Register Visual Studio as a Generator
 * Open `x64 Native Tools Command Prompt`
 * Run `cmake`
 * Close the cmd window
-
-## Building
-```
-git clone 
-cd HandToHand
-git submodule update --init --recursive
-cmake -B build -S .
-```
